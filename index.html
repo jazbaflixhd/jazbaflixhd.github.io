@@ -38,7 +38,9 @@
             background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
-            width: 100%;
+            width: auto;
+            left: 0;
+            right: 0;
             top: 0;
             z-index: 1000;
             padding: 0.8rem clamp(16px, 5vw, 60px);
@@ -80,14 +82,19 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.8rem;
+            gap: clamp(0.8rem, 3vw, 1.8rem);
+            width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
         }
         
         nav a {
             color: #e0e0e0;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             position: relative;
             padding: 5px 0;
             transition: all 0.3s ease;
@@ -96,7 +103,7 @@
         nav a::after {
             content: '';
             position: absolute;
-            width: 0;
+            width: 100;
             height: 2px;
             bottom: 0;
             left: 0;
@@ -477,7 +484,8 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
+            gap: clamp(0.8rem, 3vw, 1.8rem);
+
             max-width: 1200px;
             margin: 0 auto;
         }
