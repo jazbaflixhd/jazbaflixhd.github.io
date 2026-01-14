@@ -1,225 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- HilltopAds Verification Meta Tag -->
-<meta name="7e75c0ee149bad8f1aab6e44d61ebaa7bfaa7698" content="7e75c0ee149bad8f1aab6e44d61ebaa7bfaa7698" />
-
-<title>Jazbaflix | Free APK Experience</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
---primary:#e50914; --primary-dark:#b20710; --dark:#141414; --darker:#0a0a0a; --light:#ffffff;
---gray:#8c8c8c; --gray-dark:#454545; --card-bg:#1f1f1f; --gradient:linear-gradient(135deg,#e50914 0%,#6d0a0f 100%);
---shadow:0 10px 30px rgba(0,0,0,0.5); --transition:all 0.3s ease;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
-body{background-color:var(--darker);color:var(--light);line-height:1.6;overflow-x:hidden;}
-header{background:rgba(20,20,20,0.95);position:fixed;width:100%;top:0;z-index:1000;padding:1.2rem 5%;display:flex;justify-content:space-between;align-items:center;transition:var(--transition);border-bottom:1px solid rgba(255,255,255,0.05);}
-.logo{font-size:2rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;display:flex;align-items:center;}
-.logo i{margin-right:10px;}
-nav ul{display:flex;list-style:none;}
-nav li{margin-left:2rem;}
-nav a{color:var(--light);text-decoration:none;font-weight:500;transition:var(--transition);position:relative;}
-nav a:hover{color:var(--primary);}
-.cta-btn, .btn-secondary{
-  display:inline-block;
-  text-decoration:none;
-  background:var(--primary);
-  color:var(--light);
-  border:none;
-  padding:0.8rem 1.8rem;
-  border-radius:4px;
-  font-weight:600;
-  cursor:pointer;
-  transition:var(--transition);
-}
-.cta-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 5px 15px rgba(229,9,20,0.3);}
-.btn-secondary{background:transparent;color:var(--light);border:2px solid var(--gray-dark);}
-.btn-secondary:hover{border-color:var(--primary);color:var(--primary);}
-.hero{height:100vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2068&q=80') center/cover no-repeat;display:flex;align-items:center;padding:0 5%;margin-top:80px;}
-.hero-content{max-width:700px;}
-.hero h1{font-size:3.5rem;margin-bottom:1rem;line-height:1.2;background:linear-gradient(to right,#fff 0%,#e50914 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.hero p{font-size:1.2rem;color:var(--gray);margin-bottom:2rem;max-width:600px;}
-.hero-btns{display:flex;gap:1rem;margin-top:2rem;}
-.features{padding:5rem 5%;background-color:var(--dark);}
-.section-title{text-align:center;margin-bottom:4rem;}
-.section-title h2{font-size:2.5rem;margin-bottom:1rem;}
-.section-title p{color:var(--gray);max-width:600px;margin:0 auto;}
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
-.feature-card{background:var(--card-bg);padding:2.5rem;border-radius:10px;transition:var(--transition);border:1px solid transparent;}
-.feature-card:hover{transform:translateY(-10px);box-shadow:var(--shadow);border-color:var(--primary);}
-.feature-icon{font-size:2.5rem;margin-bottom:1.5rem;color:var(--primary);}
-.feature-card h3{font-size:1.5rem;margin-bottom:1rem;}
-.feature-card p{color:var(--gray);}
-.showcase{padding:5rem 5%;background-color:var(--darker);}
-.showcase-content{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4rem;}
-.showcase-text{flex:1;min-width:300px;}
-.showcase-text h2{font-size:2.5rem;margin-bottom:1.5rem;}
-.showcase-text ul{list-style:none;margin:2rem 0;}
-.showcase-text li{margin-bottom:1rem;display:flex;align-items:center;}
-.showcase-text li i{color:var(--primary);margin-right:10px;}
-.showcase-image{flex:1;min-width:300px;position:relative;}
-.app-mockup{width:100%;border-radius:20px;box-shadow:var(--shadow);transition:var(--transition);}
-.app-mockup:hover{transform:scale(1.02);}
-.free-app{padding:5rem 5%;background-color:var(--dark);text-align:center;}
-.free-app-content{max-width:800px;margin:0 auto;}
-.free-app h2{font-size:2.5rem;margin-bottom:1.5rem;}
-.free-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0;}
-.free-feature{background:var(--card-bg);padding:2rem;border-radius:10px;transition:var(--transition);}
-.free-feature:hover{transform:translateY(-5px);border:1px solid var(--primary);}
-.cta-section{padding:5rem 5%;background:var(--gradient);text-align:center;}
-.cta-section h2{font-size:2.5rem;margin-bottom:1rem;}
-.cta-section p{max-width:600px;margin:0 auto 2rem;font-size:1.1rem;}
-footer{background-color:var(--darker);padding:4rem 5% 2rem;}
-.footer-content{display:flex;justify-content:space-between;flex-wrap:wrap;gap:3rem;margin-bottom:3rem;}
-.footer-column{flex:1;min-width:200px;}
-.footer-column h3{font-size:1.3rem;margin-bottom:1.5rem;color:var(--primary);}
-.footer-links{list-style:none;}
-.footer-links li{margin-bottom:0.8rem;}
-.footer-links a{color:var(--gray);text-decoration:none;transition:var(--transition);}
-.footer-links a:hover{color:var(--primary);padding-left:5px;}
-.social-icons{display:flex;gap:1rem;margin-top:1.5rem;}
-.social-icons a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--card-bg);border-radius:50%;color:var(--light);text-decoration:none;transition:var(--transition);}
-.social-icons a:hover{background:var(--primary);transform:translateY(-5px);}
-.copyright{text-align:center;padding-top:2rem;border-top:1px solid var(--gray-dark);color:var(--gray);font-size:0.9rem;}
-/* Media Queries */
-@media(max-width:992px){.hero h1{font-size:2.8rem;}}
-@media(max-width:768px){header{flex-direction:column;padding:1rem 5%;}.logo{margin-bottom:1rem;}nav ul{margin-bottom:1rem;}nav li{margin:0 0.5rem;}.hero{margin-top:140px;text-align:center;}.hero-btns{justify-content:center;}.header-cta{margin-top:1rem;}}
-@media(max-width:576px){.hero h1{font-size:2.2rem;}.section-title h2{font-size:2rem;}.hero-btns{flex-direction:column;align-items:center;}.cta-btn,.btn-secondary{width:100%;max-width:300px;}}
-/* Hide hero ads on desktop */
-#inline-hero-ad-top, #inline-hero-ad-bottom{display:none;}
-@media(max-width:768px){#inline-hero-ad-top, #inline-hero-ad-bottom{display:block;}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jazbaflix</title>
+    
+    <!-- Simple PropellerAds Config -->
+    <script>
+        var propellerAdsConfig = {
+            publisherId: 3187505,
+            zoneIds: [10458675, 10458674, 10458673, 10458672]
+        };
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+    
+    <style>
+        /* Reset and basic styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #0a0a0a; 
+            color: white; 
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(20, 20, 20, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e50914;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            color: #e50914;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+        
+        /* Buttons */
+        .cta-btn {
+            display: inline-block;
+            background: #e50914;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: #b20710;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #333;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #e50914;
+            color: #e50914;
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 5%;
+            background: #141414;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #8c8c8c;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: #1f1f1f;
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #e50914;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #8c8c8c;
+        }
+        
+        /* Free App Section */
+        .free-app {
+            padding: 80px 5%;
+            background: #0a0a0a;
+            text-align: center;
+        }
+        
+        .free-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .free-feature {
+            background: #1f1f1f;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        /* Ad Containers */
+        .ad-container {
+            width: 100%;
+            min-height: 90px;
+            background: #1a1a1a;
+            border-radius: 5px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 60px 5% 30px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: #e50914;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #8c8c8c;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #e50914;
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #666;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-bottom: 15px;
+            }
+            
+            .hero {
+                margin-top: 150px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-rocket"></i> Jazbaflix
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#free">Free</a></li>
+                <li><a href="#download">Download</a></li>
+            </ul>
+        </nav>
+        <a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn">
+            <i class="fas fa-download"></i> Get App
+        </a>
+    </header>
 
-<!-- Header -->
-<header>
-<div class="logo"><i class="fas fa-rocket"></i> Jazbaflix</div>
-<nav>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#showcase">App</a></li>
-<li><a href="#free">Free</a></li>
-<li><a href="#download">Download</a></li>
-</ul>
-</nav>
-<a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn header-cta" 
-   style="display:inline-flex; align-items:center; justify-content:center; height:44px; padding:0 1.8rem; font-weight:600; font-size:1rem; border:none; border-radius:4px; background:#e50914; color:#fff; cursor:pointer; transition:all 0.3s ease; text-decoration:none;">
-   <i class="fas fa-download" style="margin-right:8px;"></i> Get App
-</a>
-</header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>100% Free Entertainment with Jazbaflix</h1>
+            <p>Watch movies, dramas, and web series for free — no premium packages required. Stream instantly or download for offline viewing.</p>
+            <div class="hero-btns">
+                <a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn" target="_blank">
+                    <i class="fas fa-download"></i> Download Free
+                </a>
+                <button class="btn-secondary">
+                    <i class="fas fa-play-circle"></i> Watch Demo
+                </button>
+            </div>
+            <div class="ad-container" id="hero-ad-top">
+                Advertisement will load here
+            </div>
+        </div>
+    </section>
 
-<!-- Hero Section -->
-<section class="hero" id="home">
-<div class="hero-content">
-<h1>100% Free Entertainment with Jazbaflix</h1>
-<p>Watch movies, dramas, and web series for free — no premium packages required. Stream instantly or download for offline viewing. Long press posters to preview trailers and enjoy smooth one-click playback.</p>
-<div class="hero-btns">
-<a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn" target="_blank" rel="noopener" download><i class="fas fa-download"></i> Download Free</a>
-<button class="btn-secondary"><i class="fas fa-play-circle"></i> Watch Demo</button>
-</div>
-<!-- Mobile-only Hero Ads -->
-<div id="inline-hero-ad-top" style="width:100%; max-height:90px; margin-top:1rem;"></div>
-<div id="inline-hero-ad-bottom" style="width:100%; max-height:90px; margin-top:1rem;"></div>
-</div>
-</section>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Why Choose Jazbaflix</h2>
+            <p>A simple, user-friendly platform designed for free entertainment lovers</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Free Movies & Series</h3>
+                <p>Enjoy movies, dramas, and web series without subscriptions or payments.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Trailer Preview</h3>
+                <p>Long press on posters to preview trailers before watching.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-unlock"></i>
+                </div>
+                <h3>No Premium Required</h3>
+                <p>All features are accessible without upgrading to paid plans.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Instant Watch & Download</h3>
+                <p>One-tap streaming or download content to watch later.</p>
+            </div>
+        </div>
+        
+        <div class="ad-container" id="middle-ad">
+            Advertisement will load here
+        </div>
+    </section>
 
-<!-- Features Section -->
-<section class="features" id="features">
-<div class="section-title"><h2>Why Choose Jazbaflix</h2><p>A simple, user-friendly platform designed for free entertainment lovers</p></div>
-<div class="features-grid">
-<div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Free Movies & Series</h3><p>Enjoy movies, dramas, and web series without subscriptions or payments.</p></div>
-<div class="feature-card"><div class="feature-icon"><i class="fas fa-film"></i></div><h3>Trailer Preview</h3><p>Long press on posters to preview trailers before watching.</p></div>
+    <!-- Free App Section -->
+    <section class="free-app" id="free">
+        <h2>100% Free. No Premium Tiers.</h2>
+        <p>Easy navigation, fast streaming, and minimal interruptions.</p>
+        
+        <div class="free-features">
+            <div class="free-feature">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Zero Cost</h3>
+                <p>No monthly fees or premium plans.</p>
+            </div>
+            
+            <div class="free-feature">
+                <i class="fas fa-ad"></i>
+                <h3>Minimal Ads</h3>
+                <p>Limited ads to keep service free.</p>
+            </div>
+            
+            <div class="free-feature">
+                <i class="fas fa-infinity"></i>
+                <h3>Unlimited Access</h3>
+                <p>Watch without daily limits.</p>
+            </div>
+        </div>
+        
+        <a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn" style="margin-top: 30px;">
+            <i class="fas fa-download"></i> Get It Free Now
+        </a>
+        
+        <div class="ad-container" id="bottom-ad" style="margin-top: 40px;">
+            Advertisement will load here
+        </div>
+    </section>
 
-<div class="feature-card"><div class="feature-icon"><i class="fas fa-unlock"></i></div><h3>No Premium Required</h3><p>All features are accessible without upgrading to paid plans.</p></div>
-<div class="feature-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Instant Watch & Download</h3><p>One-tap streaming or download content to watch later.</p></div>
-</div>
-</section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Jazbaflix</h3>
+                <p>The ultimate free entertainment platform experience.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#free">Free</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> jazbaflixltd@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +92 3139839093</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2026 Jazbaflix. All rights reserved.</p>
+        </div>
+    </footer>
 
-<!-- Free App Section -->
-<section class="free-app" id="free">
-<div class="free-app-content">
-<h2>100% Free. No Premium Tiers.</h2>
-<p>Easy navigation, fast streaming, and minimal interruptions.</p>
-<div class="free-features">
-<div class="free-feature"><i class="fas fa-dollar-sign"></i><h3>Zero Cost</h3><p>No monthly fees or premium plans.</p></div>
-<div class="free-feature"><i class="fas fa-ad"></i><h3>Minimal Ads Experience</h3><p>Limited ads are shown to keep the service free for everyone.</p></div>
-<div class="free-feature" id="free-feature-ad" style="padding:0; border:none; box-shadow:none;">
-<div id="inline-free-ad" style="width:100%; min-height:90px;"></div>
-</div>
-<div class="free-feature"><i class="fas fa-infinity"></i><h3>Unlimited Access</h3><p>Watch and download content without daily limits.</p></div>
-</div>
-<a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn" target="_blank" rel="noopener" download style="font-size:1.2rem; padding:1rem 2.5rem;"><i class="fas fa-download"></i> Get It Free Now</a>
-</div>
-</section>
+    <!-- Firebase & Ads Scripts -->
+    <script>
+        // Firebase Initialization
+        firebase.initializeApp({
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT.firebaseapp.com",
+            projectId: "YOUR_PROJECT",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        });
 
-<!-- CTA Section -->
-<section class="cta-section" id="download">
-<h2>Jazbaflix</h2>
-<p>Free entertainment platform built for movie lovers.</p>
-<a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn" target="_blank" rel="noopener" download style="background:white;color:#e50914;font-size:1.2rem;padding:1rem 2.5rem;"><i class="fas fa-download"></i> Download Free Version</a>
-</section>
+        const messaging = firebase.messaging();
 
-<!-- Footer -->
-<footer>
-<div class="footer-content">
-<div class="footer-column"><h3>Jazbaflix</h3><p>The ultimate free entertainment platform experience. Safety, style,and performance combined</p>
-<div class="social-icons"><a href="#"><i class="fab fa-whatsapp"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
-</div>
-<div class="footer-column"><h3>Quick Links</h3><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#features">Features</a></li><li><a href="#showcase">App Showcase</a></li><li><a href="#free">Free</a></li><li><a href="#download">Download</a></li></ul></div>
-<div class="footer-column"><h3>Legal</h3><ul class="footer-links"><li><a href="https://file.garden/aU9YIYI0UybtQjdC/privacy.html">Privacy Policy</a></li><li><a href="https://file.garden/aU9YIYI0UybtQjdC/terms.html">Terms of Service</a></li></ul></div>
-<div class="footer-column"><h3>Contact Us</h3><ul class="footer-links"><li><i class="fas fa-envelope"></i> jazbaflixltd@gmail.com</li><li><i class="fas fa-phone"></i> +92 3139839093</li><li><i class="fas fa-map-marker-alt"></i> Pakistan</li></ul></div>
-</div>
-<div class="copyright"><p>&copy; 2026 Jazbaflix. All rights reserved.</p></div>
-</footer>
+        function requestPermission() {
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    messaging.getToken({vapidKey: "YOUR_VAPID_KEY"})
+                        .then(token => {
+                            console.log("FCM Token:", token);
+                        })
+                        .catch(err => console.error("Token error:", err));
+                } else {
+                    console.log("Notification permission denied");
+                }
+            });
+        }
 
-<!-- Ads Scripts -->
-<script>
-var adState={isShowingAd:false};
-function showPropellerAd(){
-if(!propellerAdsConfig || !propellerAdsConfig.publisherId || !propellerAdsConfig.zoneId){
-  showBackupAd(); return;
-}
-if(adState.isShowingAd) return;
-adState.isShowingAd=true;
-var s=document.createElement('script'); s.src="//ads.propellerads.com/ads.js"; s.async=true; document.body.appendChild(s);
-s.onload=function(){adState.isShowingAd=false;};
-}
-function showBackupAd(){
-var s=document.createElement('script'); s.src="https://www.adsterra.com/ads.js"; s.async=true; document.body.appendChild(s);
-}
-function showInlineAds(){
-const heroTop=document.getElementById('inline-hero-ad-top');
-const heroBottom=document.getElementById('inline-hero-ad-bottom');
-const featureAd=document.getElementById('inline-feature-ad');
-const freeAd=document.getElementById('inline-free-ad');
-[heroTop, heroBottom, featureAd, freeAd].forEach(el=>{
-if(propellerAdsConfig && propellerAdsConfig.publisherId && propellerAdsConfig.zoneId){
-  var s=document.createElement('script'); s.src="//ads.propellerads.com/ads.js"; s.async=true; el.appendChild(s);
-} else {
-  var iframe=document.createElement('iframe'); iframe.src="https://ad.adsterra.com/?ad_type=iframe"; iframe.style.width="100%"; iframe.style.height="90px"; iframe.style.border="none"; el.appendChild(iframe);
-}});
-}
-document.addEventListener("DOMContentLoaded",function(){showPropellerAd(); showInlineAds();});
-window.addEventListener('scroll',function(){
-const header=document.querySelector('header');
-if(window.scrollY>50){header.style.background='rgba(10,10,10,0.98)'; header.style.padding='0.8rem 5%';} 
-else{header.style.background='rgba(20,20,20,0.95)'; header.style.padding='1.2rem 5%';}
-});
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener('click',function(e){
-e.preventDefault();
-const targetId=this.getAttribute('href');
-if(targetId==='#') return;
-const targetElement=document.querySelector(targetId);
-if(targetElement) window.scrollTo({top:targetElement.offsetTop-80,behavior:'smooth'});
-});
-});
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Request notification permission after page load
+            requestPermission();
+
+            // Ads and smooth scrolling code here
+            console.log('Page loaded successfully');
+
+            setTimeout(function() {
+                loadPropellerAds();
+            }, 2000);
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                header.style.background = window.scrollY > 50 ? 'rgba(10,10,10,0.98)' : 'rgba(20,20,20,0.95)';
+            });
+        });
+
+        // Propeller Ads functions
+        function loadPropellerAds() {
+            try {
+                if (typeof propellerAdsConfig !== 'undefined' && propellerAdsConfig.publisherId) {
+                    var script = document.createElement('script');
+                    script.src = 'https://ads.propellerads.com/ads.js';
+                    script.async = true;
+                    document.body.appendChild(script);
+                    script.onload = showAdsInContainers;
+                } else loadBackupAds();
+            } catch (e) { loadBackupAds(); }
+        }
+
+        function showAdsInContainers() {
+            ['hero-ad-top', 'middle-ad', 'bottom-ad'].forEach(id => {
+                var container = document.getElementById(id);
+                if(container) {
+                    var iframe = document.createElement('iframe');
+                    iframe.src = 'https://ads.propellerads.com/ad?pid=' + propellerAdsConfig.publisherId;
+                    iframe.style.width = '100%';
+                    iframe.style.height = '90px';
+                    iframe.style.border = 'none';
+                    container.innerHTML = '';
+                    container.appendChild(iframe);
+                }
+            });
+        }
+
+        function loadBackupAds() {
+            ['hero-ad-top', 'middle-ad', 'bottom-ad'].forEach(id => {
+                var container = document.getElementById(id);
+                if(container) container.innerHTML = '<div style="padding:20px;text-align:center;">Ad Space Ready</div>';
+            });
+        }
+    </script>
 </body>
 </html>
