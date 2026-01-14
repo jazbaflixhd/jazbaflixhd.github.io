@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jazbaflix</title>
-    
-    <!-- Simple PropellerAds Config -->
-    <script>
-        var propellerAdsConfig = {
-            publisherId: 3187505,
-            zoneIds: [10458675, 10458674, 10458673, 10458672]
-        };
-    </script>
+    <title>Jazbaflix - Free Movies & Web Series</title>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,237 +13,608 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
     
     <style>
-        /* Reset and basic styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: #0a0a0a; 
-            color: white; 
-            line-height: 1.6;
+        /* Reset and Modern Base */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
         }
         
-        /* Header */
+        body { 
+            font-family: 'Segoe UI', 'Poppins', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #0f0f0f; 
+            color: #ffffff; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Modern Header */
         header {
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 1rem 5%;
+            padding: 0.8rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(229, 9, 20, 0.3);
+            transition: all 0.3s ease;
         }
         
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        
+        .logo-text {
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 700;
             color: #e50914;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
         
-        .logo i {
-            margin-right: 10px;
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         
         nav ul {
             display: flex;
             list-style: none;
-        }
-        
-        nav li {
-            margin-left: 1.5rem;
+            gap: 1.8rem;
         }
         
         nav a {
-            color: white;
+            color: #e0e0e0;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: #e50914;
+            transition: width 0.3s ease;
         }
         
         nav a:hover {
-            color: #e50914;
+            color: #ffffff;
         }
         
-        /* Hero Section */
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .header-btns {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .header-btn {
+            background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+            text-decoration: none;
+        }
+        
+        .header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+        }
+        
+        /* Animated Alert Button */
+        .alert-btn {
+            background: linear-gradient(135deg, #e50914 0%, #2E7D32 100%);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: bellPulse 2s infinite;
+        }
+        
+        @keyframes bellPulse {
+            0%, 100% { 
+                transform: translateY(0);
+                box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            }
+            50% { 
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+            }
+        }
+        
+        .alert-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .alert-btn:hover::before {
+            left: 100%;
+        }
+        
+        .alert-btn:hover {
+            animation: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.8);
+        }
+        
+        .alert-btn .bell-icon {
+            animation: bellRing 1s ease infinite;
+        }
+        
+        @keyframes bellRing {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: rotate(-5deg); }
+            20%, 40%, 60%, 80% { transform: rotate(5deg); }
+        }
+        
+        /* Pulse effect for notification dot */
+        .notification-dot {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 8px;
+            height: 8px;
+            background: #e50914;
+            border-radius: 50%;
+            animation: dotPulse 1.5s infinite;
+        }
+        
+        @keyframes dotPulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+        }
+        
+        /* Get App Button */
+        .get-app-btn {
+            background: linear-gradient(135deg, #e79 0%, #e50914 100%);
+            box-shadow: 0 4px 15px rgba(255, 15, 0, 0.9);
+            animation: getAppPulse 2s infinite;
+            display: none; /* Initially hidden */
+        }
+        
+        @keyframes getAppPulse {
+            0%, 100% { 
+                transform: translateY(0);
+                box-shadow: 0 4px 15px rgba(43, 18, 0, 0.9);
+            }
+            50% { 
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px #437;
+            }
+        }
+        
+        .get-app-btn:hover {
+            animation: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 15, 0, 0.9);
+        }
+        
+        /* Compact Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            min-height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1925&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             padding: 0 5%;
             margin-top: 70px;
+            position: relative;
         }
         
         .hero-content {
             max-width: 700px;
+            animation: fadeUp 1s ease;
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.7rem;
             margin-bottom: 1rem;
+            margin-top: 2rem;
             color: white;
+            line-height: 1.2;
+            background: linear-gradient(to right, #ffffff, #e50914);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero p {
             font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 2rem;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
         }
         
-        /* Buttons */
+        /* Professional Buttons */
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
         .cta-btn {
-            display: inline-block;
-            background: #e50914;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
             color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
+            padding: 1rem 2.2rem;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
             border: none;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-btn:hover::before {
+            left: 100%;
         }
         
         .cta-btn:hover {
-            background: #b20710;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
         }
         
         .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             background: transparent;
             color: white;
-            border: 2px solid #333;
-            padding: 12px 30px;
-            border-radius: 5px;
+            border: 2px solid rgba(255,255,255,0.2);
+            padding: 1rem 2.0rem;
+            border-radius: 35px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
         }
         
         .btn-secondary:hover {
             border-color: #e50914;
             color: #e50914;
+            transform: translateY(-2px);
         }
         
-        /* Features */
+        .hero-badges {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #8c8c8c;
+        }
+        
+        .badge i {
+            color: #4CAF50;
+        }
+        
+        /* Alert Notification Box */
+        .alert-box {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .alert-icon {
+            font-size: 1.5rem;
+            color: #4CAF50;
+        }
+        
+        .alert-content {
+            flex: 1;
+        }
+        
+        .alert-content h4 {
+            color: #4CAF50;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+        
+        .alert-content p {
+            font-size: 0.9rem;
+            color: #8c8c8c;
+            margin-bottom: 0;
+        }
+        
+        .alert-close {
+            background: none;
+            border: none;
+            color: #8c8c8c;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .alert-close:hover {
+            color: #fff;
+        }
+        
+        /* Compact Features Section */
         .features {
-            padding: 80px 5%;
+            padding: 5rem 5%;
             background: #141414;
+            position: relative;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 3.5rem;
         }
         
         .section-title h2 {
             font-size: 2.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #e50914;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .section-title p {
             color: #8c8c8c;
             max-width: 600px;
             margin: 0 auto;
+            font-size: 1.05rem;
         }
         
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 1.8rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         
         .feature-card {
-            background: #1f1f1f;
-            padding: 30px;
-            border-radius: 10px;
-            transition: transform 0.3s;
+            background: linear-gradient(145deg, #1a1a1a, #222222);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #e50914, #ff6b6b);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: rgba(229, 9, 20, 0.2);
         }
         
         .feature-icon {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: #e50914;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 1rem;
+            background: rgba(229, 9, 20, 0.1);
+            border-radius: 12px;
         }
         
         .feature-card h3 {
             font-size: 1.3rem;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
+            color: white;
         }
         
         .feature-card p {
             color: #8c8c8c;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
         
-        /* Free App Section */
+        /* Compact App Section */
         .free-app {
-            padding: 80px 5%;
-            background: #0a0a0a;
+            padding: 5rem 5%;
+            background: #0f0f0f;
             text-align: center;
         }
         
-        .free-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 40px auto;
+        .free-app .features-grid {
+            margin-top: 2.5rem;
         }
         
-        .free-feature {
-            background: #1f1f1f;
-            padding: 25px;
-            border-radius: 10px;
+        /* Compact CTA Section */
+        .cta-section {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.9) 0%, rgba(109, 10, 15, 0.9) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Ad Containers */
-        .ad-container {
-            width: 100%;
-            min-height: 90px;
-            background: #1a1a1a;
-            border-radius: 5px;
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 14px;
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+            opacity: 0.1;
         }
         
-        /* Footer */
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section .cta-btn {
+            background: white;
+            color: #e50914;
+            font-size: 1.1rem;
+            padding: 1.1rem 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section .cta-btn:hover {
+            background: #f5f5f5;
+            color: #b20710;
+        }
+        
+        /* Compact Footer */
         footer {
             background: #0a0a0a;
-            padding: 60px 5% 30px;
-            border-top: 1px solid #333;
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
         
         .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
         
         .footer-column h3 {
             color: #e50914;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
         }
         
         .footer-links {
@@ -259,43 +622,137 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 0.8rem;
         }
         
         .footer-links a {
             color: #8c8c8c;
             text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .footer-links a:hover {
             color: #e50914;
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-icons a:hover {
+            background: #e50914;
+            transform: translateY(-3px);
+            border-color: #e50914;
         }
         
         .copyright {
             text-align: center;
             color: #666;
-            padding-top: 30px;
-            border-top: 1px solid #333;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
         }
         
-        /* Responsive */
+        /* Download Counter */
+        .download-counter {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .counter-item {
+            text-align: center;
+        }
+        
+        .counter-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e50914;
+            display: block;
+        }
+        
+        .counter-label {
+            font-size: 0.9rem;
+            color: #8c8c8c;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                gap: 1.5rem;
+            }
+            
+            .header-btns {
+                gap: 0.8rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                padding: 15px 5%;
+                padding: 1rem 5%;
+                gap: 1rem;
             }
             
-            .logo {
-                margin-bottom: 15px;
+            .logo-container {
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
             }
             
             nav ul {
-                margin-bottom: 15px;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .header-btns {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .header-btn {
+                width: 100%;
+                justify-content: center;
             }
             
             .hero {
                 margin-top: 150px;
                 text-align: center;
+                min-height: auto;
+                padding: 3rem 5%;
             }
             
             .hero h1 {
@@ -304,45 +761,237 @@
             
             .hero-btns {
                 flex-direction: column;
-                gap: 15px;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .cta-btn, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .features, .free-app, .cta-section {
+                padding: 3rem 5%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .alert-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .header-btns {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .logo-img {
+                height: 70px;
+            }
+        }
+        
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #e50914, #ff6b6b);
+            z-index: 1001;
+            transition: width 0.2s ease;
+        }
+        
+        /* Notification Status */
+        .notification-status {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 1002;
+            display: none;
+            animation: slideInRight 0.3s ease;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Success Animation */
+        .success-animation {
+            display: inline-block;
+            animation: successBounce 0.5s ease;
+        }
+        
+        @keyframes successBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Button transition animation */
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+        
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Notification Status -->
+    <div class="notification-status" id="notificationStatus"></div>
+    
     <!-- Header -->
     <header>
-        <div class="logo">
-            <i class="fas fa-rocket"></i> Jazbaflix
+        <div class="logo-container">
+            <!-- Logo Image -->
+            <img src="https://file.garden/aU9YIYI0UybtQjdC/ChatGPT%20Image%20Dec%2030%2C%202025%2C%2012_00_48%20AM_1.png" 
+                 alt="Jazbaflix Logo" 
+                 class="logo-img"
+                 onerror="this.onerror=null; this.style.display='none'; document.querySelector('.logo-text').style.display='flex';">
+            <!-- Fallback Text Logo -->
+            <div class="logo-text" style="display: none;">
+                <i class="fas fa-film"></i> Jazbaflix
+            </div>
         </div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#app">App</a></li>
                 <li><a href="#free">Free</a></li>
                 <li><a href="#download">Download</a></li>
             </ul>
         </nav>
-        <a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn">
-            <i class="fas fa-download"></i> Get App
-        </a>
+        <div class="header-btns">
+            <!-- Alert Button (Initially visible) -->
+            <button onclick="bellButtonClicked()" class="header-btn alert-btn" id="alertButton">
+                <i class="fas fa-bell bell-icon"></i> Enable Movie Alerts
+                <div class="notification-dot"></div>
+            </button>
+            
+            <!-- Get App Button (Initially hidden) -->
+            <a href="https://pixeldrain.com/u/zBGBxqdo" class="header-btn get-app-btn" id="getAppButton" target="_blank" style="display: none;">
+                <i class="fas fa-download"></i> Get App
+            </a>
+        </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>100% Free Entertainment with Jazbaflix</h1>
-            <p>Watch movies, dramas, and web series for free — no premium packages required. Stream instantly or download for offline viewing.</p>
+            <h1>Unlimited Entertainment, Zero Cost</h1>
+            <p>Stream your favorite movies, web series, and dramas for free. No subscriptions, no hidden charges. Experience premium entertainment without the price tag.</p>
+            
             <div class="hero-btns">
                 <a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn" target="_blank">
-                    <i class="fas fa-download"></i> Download Free
+                    <i class="fas fa-download"></i> Download App
                 </a>
-                <button class="btn-secondary">
+                <button class="btn-secondary" onclick="showDemoAlert()">
                     <i class="fas fa-play-circle"></i> Watch Demo
                 </button>
             </div>
-            <div class="ad-container" id="hero-ad-top">
-                Advertisement will load here
+            
+            <div class="hero-badges">
+                <div class="badge">
+                    <i class="fas fa-check-circle"></i> No Registration Required
+                </div>
+                <div class="badge">
+                    <i class="fas fa-check-circle"></i> 100% Free Forever
+                </div>
+                <div class="badge">
+                    <i class="fas fa-check-circle"></i> No Premium Require
+                </div>
+            </div>
+            
+            <!-- Alert Notification Box -->
+            <div class="alert-box" id="alertBox">
+                <div class="alert-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="alert-content">
+                    <h4>Never Miss New Releases!</h4>
+                    <p>Enable movie alerts to get instant notifications when new movies and episodes are added.</p>
+                </div>
+                <button class="alert-close" onclick="closeAlertBox()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="download-counter">
+                <div class="counter-item">
+                    <span class="counter-number" data-count="50">0</span>
+                    <span class="counter-label">K+ Downloads</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-count="10">0</span>
+                    <span class="counter-label">K+ Movies</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-count="5">0</span>
+                    <span class="counter-label">K+ Series</span>
+                </div>
             </div>
         </div>
     </section>
@@ -350,80 +999,149 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="section-title">
-            <h2>Why Choose Jazbaflix</h2>
-            <p>A simple, user-friendly platform designed for free entertainment lovers</p>
+            <h2>Premium Features, Zero Cost</h2>
+            <p>Experience movie streaming like never before with our feature-packed platform</p>
         </div>
         
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Free Movies & Series</h3>
-                <p>Enjoy movies, dramas, and web series without subscriptions or payments.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
                     <i class="fas fa-film"></i>
                 </div>
-                <h3>Trailer Preview</h3>
-                <p>Long press on posters to preview trailers before watching.</p>
+                <h3>HD Streaming</h3>
+                <p>Watch movies and series in crystal clear HD quality with multiple resolution options.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-unlock"></i>
+                    <i class="fas fa-download"></i>
                 </div>
-                <h3>No Premium Required</h3>
-                <p>All features are accessible without upgrading to paid plans.</p>
+                <h3>Offline Download</h3>
+                <p>Download your favorite content and watch it anytime, anywhere without internet.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-bolt"></i>
                 </div>
-                <h3>Instant Watch & Download</h3>
-                <p>One-tap streaming or download content to watch later.</p>
+                <h3>Instant Play</h3>
+                <p>No buffering, instant streaming with our optimized servers and smart caching.</p>
             </div>
-        </div>
-        
-        <div class="ad-container" id="middle-ad">
-            Advertisement will load here
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Quick Trailer View</h3>
+                <p>Just long press on movie poster watch trailer</p>
+            </div>
         </div>
     </section>
 
-    <!-- Free App Section -->
-    <section class="free-app" id="free">
-        <h2>100% Free. No Premium Tiers.</h2>
-        <p>Easy navigation, fast streaming, and minimal interruptions.</p>
-        
-        <div class="free-features">
-            <div class="free-feature">
-                <i class="fas fa-dollar-sign"></i>
-                <h3>Zero Cost</h3>
-                <p>No monthly fees or premium plans.</p>
-            </div>
-            
-            <div class="free-feature">
-                <i class="fas fa-ad"></i>
-                <h3>Minimal Ads</h3>
-                <p>Limited ads to keep service free.</p>
-            </div>
-            
-            <div class="free-feature">
-                <i class="fas fa-infinity"></i>
-                <h3>Unlimited Access</h3>
-                <p>Watch without daily limits.</p>
-            </div>
+    <!-- App Section -->
+    <section class="free-app" id="app">
+        <div class="section-title">
+            <h2>User-Friendly Experience</h2>
+            <p>Designed for simplicity and maximum entertainment enjoyment</p>
         </div>
         
-        <a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn" style="margin-top: 30px;">
-            <i class="fas fa-download"></i> Get It Free Now
-        </a>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Intuitive Interface</h3>
+                <p>Clean, modern design that makes finding and watching content effortless.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Smart Search</h3>
+                <p>Find movies and series quickly with our powerful search and filter options.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3>Multi-Language</h3>
+                <p>Subtitles and audio in multiple languages for global accessibility.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Cross-Device Sync</h3>
+                <p>Continue watching from where you left off on any device.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Section -->
+    <section class="free-app" id="free">
+        <div class="section-title">
+            <h2>Truly Free Forever</h2>
+            <p>No hidden costs, no premium tiers, just pure entertainment</p>
+        </div>
         
-        <div class="ad-container" id="bottom-ad" style="margin-top: 40px;">
-            Advertisement will load here
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-unlock"></i>
+                </div>
+                <h3>No Premium Locks</h3>
+                <p>Every feature is available from day one. No paywalls, no restrictions.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-ad"></i>
+                </div>
+                <h3>Minimal Intrusive Ads</h3>
+                <p>We show only essential ads to keep the service free and running smoothly.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Safe & Secure</h3>
+                <p>Your privacy matters. We don't collect unnecessary personal data.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <h3>Unlimited Access</h3>
+                <p>Watch as much as you want, whenever you want. No daily limits.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="download">
+        <h2>Start Streaming Now</h2>
+        <p>Join thousands of users enjoying free premium entertainment. Download the app and start your movie marathon today!</p>
+        <a href="https://pixeldrain.com/u/zBGBxqdo" class="cta-btn" target="_blank">
+            <i class="fas fa-download"></i> Download Free App
+        </a>
+        <div class="download-counter">
+            <div class="counter-item">
+                <span class="counter-number" data-count="50">0</span>
+                <span class="counter-label">K+ Downloads</span>
+            </div>
+            <div class="counter-item">
+                <span class="counter-number" data-count="24">0</span>
+                <span class="counter-label">/7 Support</span>
+            </div>
+            <div class="counter-item">
+                <span class="counter-number" data-count="99">0</span>
+                <span class="counter-label">% Uptime</span>
+            </div>
         </div>
     </section>
 
@@ -432,126 +1150,235 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h3>Jazbaflix</h3>
-                <p>The ultimate free entertainment platform experience.</p>
+                <p style="color: #8c8c8c; margin-bottom: 1.5rem;">The ultimate free entertainment destination for movie lovers worldwide.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
             </div>
             
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#free">Free</a></li>
-                    <li><a href="#download">Download</a></li>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
+                    <li><a href="#app"><i class="fas fa-mobile-alt"></i> App</a></li>
+                    <li><a href="#free"><i class="fas fa-unlock"></i> Free</a></li>
+                    <li><a href="#download"><i class="fas fa-download"></i> Download</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="https://file.garden/aU9YIYI0UybtQjdC/privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                    <li><a href="https://file.garden/aU9YIYI0UybtQjdC/terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                    <li><a href="https://file.garden/aWfBGfhwaGcNwkre/cookie-policy.html"><i class="fas fa-cookie"></i> Cookie Policy</a></li>
+                    <li><a href="https://file.garden/aWfBGfhwaGcNwkre/disclaimer.html"><i class="fas fa-balance-scale"></i> Disclaimer</a></li>
+                    <li><a href="https://file.garden/aWfBGfhwaGcNwkre/dmca-policy.html"><i class="fas fa-gavel"></i> DMCA Policy</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul class="footer-links">
-                    <li><i class="fas fa-envelope"></i> jazbaflixltd@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> +92 3139839093</li>
+                    <li><a href="mailto:jazbaflixltd@gmail.com"><i class="fas fa-envelope"></i> jazbaflixltd@gmail.com</a></li>
+                    <li><a href="tel:+923139839093"><i class="fas fa-phone"></i> +92 313 9839093</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Pakistan</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="copyright">
-            <p>&copy; 2026 Jazbaflix. All rights reserved.</p>
+            <p>&copy; 2026 Jazbaflix. All rights reserved. | Free Entertainment Platform</p>
         </div>
     </footer>
 
-    <!-- Firebase & Ads Scripts -->
+    <!-- Firebase Scripts -->
     <script>
         // Firebase Initialization
         firebase.initializeApp({
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT.firebaseapp.com",
-            projectId: "YOUR_PROJECT",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID"
+          apiKey: "AIzaSyDg9nJ36YnxwcSY0CPAIKXnc_9MDltlVRw",
+          authDomain: "jazbaflix-push.firebaseapp.com",
+          projectId: "jazbaflix-push",
+          messagingSenderId: "294121382918",
+          appId: "1:294121382918:web:c2a12d0485d56b754f0f87"
         });
 
         const messaging = firebase.messaging();
 
+        // Function to handle bell button click
+        function bellButtonClicked() {
+            // Animate and hide the bell button
+            const alertBtn = document.getElementById('alertButton');
+            alertBtn.classList.add('fade-out');
+            
+            // Wait for animation to complete, then hide and show Get App button
+            setTimeout(() => {
+                alertBtn.style.display = 'none';
+                
+                // Show the Get App button with animation
+                const getAppBtn = document.getElementById('getAppButton');
+                getAppBtn.style.display = 'flex';
+                getAppBtn.classList.add('fade-in');
+                
+                // Show notification
+                showNotificationStatus("🔔 Movie alerts enabled! Get app now to enjoy unlimited entertainment.", "success");
+                
+                // Store in localStorage that bell was clicked
+                localStorage.setItem('bellButtonClicked', 'true');
+                
+                // Also request notification permission
+                requestPermission();
+                
+            }, 500);
+        }
+
+        // Function to request notification permission
         function requestPermission() {
             Notification.requestPermission().then(permission => {
                 if (permission === "granted") {
-                    messaging.getToken({vapidKey: "YOUR_VAPID_KEY"})
-                        .then(token => {
-                            console.log("FCM Token:", token);
-                        })
-                        .catch(err => console.error("Token error:", err));
-                } else {
-                    console.log("Notification permission denied");
+                    messaging.getToken({vapidKey:"BFGi7vl0HCYRweWv4qGWBIArkTZoOJVun-JFYhcJws7qdtB5QkKo19TRqbcd3Jd6A6oKdC585S-Who1fsBpQAk4"})
+                    .then(token => {
+                        console.log("FCM Token:", token);
+                        
+                        // Store preference in localStorage
+                        localStorage.setItem('jazbaflix_notifications', 'enabled');
+                        
+                    })
+                    .catch(err => {
+                        console.error("Token error:", err);
+                    });
                 }
             });
         }
 
+        // Function to show notification status with type
+        function showNotificationStatus(message, type = "info") {
+            const statusDiv = document.getElementById('notificationStatus');
+            statusDiv.textContent = message;
+            
+            // Set different colors based on type
+            switch(type) {
+                case "success":
+                    statusDiv.style.background = 'rgba(76, 175, 80, 0.9)';
+                    break;
+                case "error":
+                    statusDiv.style.background = 'rgba(244, 67, 54, 0.9)';
+                    break;
+                case "warning":
+                    statusDiv.style.background = 'rgba(255, 152, 0, 0.9)';
+                    break;
+                case "info":
+                    statusDiv.style.background = 'rgba(33, 150, 243, 0.9)';
+                    break;
+            }
+            
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        // Function to close alert box
+        function closeAlertBox() {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.style.display = 'none';
+            localStorage.setItem('alertBoxClosed', 'true');
+        }
+
+        // Function to show demo alert
+        function showDemoAlert() {
+            showNotificationStatus("🎥 Demo Coming Soon! Download the app to experience full features.", "info");
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Request notification permission after page load
-            requestPermission();
+            // Check if bell button was previously clicked
+            const bellClicked = localStorage.getItem('bellButtonClicked');
+            if (bellClicked === 'true') {
+                // Hide bell button and show Get App button
+                document.getElementById('alertButton').style.display = 'none';
+                document.getElementById('getAppButton').style.display = 'flex';
+            }
 
-            // Ads and smooth scrolling code here
-            console.log('Page loaded successfully');
-
-            setTimeout(function() {
-                loadPropellerAds();
-            }, 2000);
-
+            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
+                    if(this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
                     }
                 });
             });
 
+            // Scroll progress bar
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
-                header.style.background = window.scrollY > 50 ? 'rgba(10,10,10,0.98)' : 'rgba(20,20,20,0.95)';
+                header.style.background = window.scrollY > 50 ? 'rgba(15,15,15,0.98)' : 'rgba(15,15,15,0.95)';
+                header.style.backdropFilter = window.scrollY > 50 ? 'blur(15px)' : 'blur(10px)';
+                
+                // Progress bar
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById("progressBar").style.width = scrolled + "%";
             });
-        });
 
-        // Propeller Ads functions
-        function loadPropellerAds() {
-            try {
-                if (typeof propellerAdsConfig !== 'undefined' && propellerAdsConfig.publisherId) {
-                    var script = document.createElement('script');
-                    script.src = 'https://ads.propellerads.com/ads.js';
-                    script.async = true;
-                    document.body.appendChild(script);
-                    script.onload = showAdsInContainers;
-                } else loadBackupAds();
-            } catch (e) { loadBackupAds(); }
-        }
+            // Animated counter
+            const counters = document.querySelectorAll('.counter-number');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    
+                    const inc = target / speed;
+                    
+                    if(count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                }
+                
+                updateCount();
+            });
 
-        function showAdsInContainers() {
-            ['hero-ad-top', 'middle-ad', 'bottom-ad'].forEach(id => {
-                var container = document.getElementById(id);
-                if(container) {
-                    var iframe = document.createElement('iframe');
-                    iframe.src = 'https://ads.propellerads.com/ad?pid=' + propellerAdsConfig.publisherId;
-                    iframe.style.width = '100%';
-                    iframe.style.height = '90px';
-                    iframe.style.border = 'none';
-                    container.innerHTML = '';
-                    container.appendChild(iframe);
+            // Check notification status on load
+            const notificationStatus = localStorage.getItem('jazbaflix_notifications');
+            
+            // Check if alert box was previously closed
+            const alertBoxClosed = localStorage.getItem('alertBoxClosed');
+            if (alertBoxClosed === 'true') {
+                document.getElementById('alertBox').style.display = 'none';
+            }
+
+            // Listen for incoming messages
+            messaging.onMessage((payload) => {
+                console.log('Message received:', payload);
+                showNotificationStatus(`🎬 ${payload.notification.title}: ${payload.notification.body}`, "info");
+                
+                // You can also show a custom notification
+                if (Notification.permission === "granted") {
+                    new Notification(payload.notification.title, {
+                        body: payload.notification.body,
+                        icon: 'https://cdn-icons-png.flaticon.com/512/3163/3163478.png'
+                    });
                 }
             });
-        }
-
-        function loadBackupAds() {
-            ['hero-ad-top', 'middle-ad', 'bottom-ad'].forEach(id => {
-                var container = document.getElementById(id);
-                if(container) container.innerHTML = '<div style="padding:20px;text-align:center;">Ad Space Ready</div>';
-            });
-        }
+        });
     </script>
 </body>
 </html>
