@@ -36,7 +36,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 0.8rem 5%;
+            padding: 0.1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -51,7 +51,7 @@
         }
         
         .logo-img {
-            height: 40px;
+            height: 45px;
             width: auto;
             object-fit: contain;
             border-radius: 5px;
@@ -115,7 +115,7 @@
         .header-btn {
             background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
             color: white;
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 0.5rem;
             border-radius: 30px;
             border: none;
             font-weight: 600;
@@ -268,7 +268,7 @@
         .hero h1 {
             font-size: 2.7rem;
             margin-bottom: 1rem;
-            margin-top: 2rem;
+            
             color: white;
             line-height: 1.2;
             background: linear-gradient(to right, #ffffff, #e50914);
@@ -379,7 +379,7 @@
             border: 1px solid rgba(76, 175, 80, 0.3);
             border-radius: 10px;
             padding: 1rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -719,8 +719,8 @@
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                padding: 1rem 5%;
-                gap: 1rem;
+                padding: 0.5rem 5%;
+                gap: 0.1rem;
             }
             
             .logo-container {
@@ -729,15 +729,18 @@
             }
             
             .logo-text {
-                font-size: 1.5rem;
+                font-size: 2.5rem;
             }
             
             nav ul {
-    gap: clamp(1.5rem, 6vw, 3rem);
+    gap: clamp(1.2rem, 6vw, 3rem);
+    padding: 0 clamp(1rem, 5vw, 3rem);
+}
 
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+nav ul li a {
+    padding: 4px 2px;
+}
+
             
             .header-btns {
                 flex-direction: column;
@@ -902,7 +905,7 @@
     }
 }
 .get-app-btn {
-    padding: 13px 12px;
+    padding: 13px 1px;
     font-size: 13px;
 }
 
@@ -920,7 +923,7 @@
     <header>
         <div class="logo-container">
             <!-- Logo Image -->
-            <img src="https://file.garden/aU9YIYI0UybtQjdC/ChatGPT%20Image%20Dec%2030%2C%202025%2C%2012_00_48%20AM_1.png" 
+            <img src="https://file.garden/aWfBGfhwaGcNwkre/1767380280336.png" 
                  alt="Jazbaflix Logo" 
                  class="logo-img"
                  onerror="this.onerror=null; this.style.display='none'; document.querySelector('.logo-text').style.display='flex';">
