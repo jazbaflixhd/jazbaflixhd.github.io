@@ -1,37 +1,23 @@
-[
-  {
-    "image": "https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    "title": "T20 World Cup Final",
-    "subtitle": "Pakistan vs Australia",
-    "channel": 0,
-    "live": true
-  },
-  {
-    "image": "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    "title": "PREMIER LEAGUE",
-    "subtitle": "Live on Ten Sports",
-    "channel": 1,
-    "live": false
-  },
-  {
-    "image": "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    "title": "BREAKING NEWS",
-    "subtitle": "Latest Updates on Geo News",
-    "channel": 4,
-    "live": false
-  },
-  {
-    "image": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    "title": "Express News Special",
-    "subtitle": "Exclusive Coverage",
-    "channel": 7,
-    "live": true
-  },
-  {
-    "image": "https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    "title": "Dunya News Exclusive",
-    "subtitle": "Live Press Conference",
-    "channel": 109,
-    "live": true
-  }
-]
+ [
+      {
+        "image": "https://file.garden/aWfBGfhwaGcNwkre/t20slider1.webp",
+        "title": "T20 World Cup",
+        "subtitle": "Pakistan vs India",
+        "channel": 116,
+        "live": true
+      },
+      {
+        "image": "https://file.garden/aWfBGfhwaGcNwkre/Slider2.webp",
+        "title": "PTV Sports",
+        "subtitle": "Pak Vs India",
+        "channel": 114,
+        "live": true
+      },
+      {
+        "image": "https://file.garden/aWfBGfhwaGcNwkre/tensport.webp",
+        "title": "Ten Sports",
+        "subtitle": "T20 World Cup Live",
+        "channel": 115,
+        "live": true
+      }
+    ]
