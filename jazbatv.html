@@ -2340,6 +2340,63 @@ div[style*="gridColumn"]:has(script) {
 })();
 </script>
 
+<!-- ====== ANDROID FULLSCREEN FIX - YAHAN ADD KIYA ====== -->
+<script>
+// 🔥 ANDROID FULLSCREEN FIX - Video fullscreen ke liye
+function requestFullscreen() {
+    var videoElement = document.querySelector('video');
+    if (videoElement) {
+        if (videoElement.requestFullscreen) {
+            videoElement.requestFullscreen();
+        } else if (videoElement.webkitRequestFullscreen) {
+            videoElement.webkitRequestFullscreen();
+        } else if (videoElement.webkitEnterFullscreen) {
+            videoElement.webkitEnterFullscreen(); // iOS
+        }
+    }
+}
+
+// Fullscreen change event
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+
+function handleFullscreenChange() {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+        // Fullscreen me gaya
+        if (window.Android && Android.fullscreenChanged) {
+            Android.fullscreenChanged(true);
+        }
+    } else {
+        // Fullscreen se bahar aaya
+        if (window.Android && Android.fullscreenChanged) {
+            Android.fullscreenChanged(false);
+        }
+    }
+}
+
+// Video elements par fullscreen event listeners add karo
+function setupVideoFullscreen() {
+    var videos = document.getElementsByTagName('video');
+    for(var i = 0; i < videos.length; i++) {
+        videos[i].addEventListener('webkitbeginfullscreen', function() {
+            if (window.Android && Android.fullscreenChanged) {
+                Android.fullscreenChanged(true);
+            }
+        });
+        videos[i].addEventListener('webkitendfullscreen', function() {
+            if (window.Android && Android.fullscreenChanged) {
+                Android.fullscreenChanged(false);
+            }
+        });
+    }
+}
+
+// Page load par setup karo
+document.addEventListener('DOMContentLoaded', setupVideoFullscreen);
+// Har 2 second mein check karo naye videos ke liye
+setInterval(setupVideoFullscreen, 2000);
+</script>
+
 <!-- ====== SOCIAL BAR AD ====== -->
 <script src="https://pl28486350.effectivegatecpm.com/7e/20/ef/7e20efe78f96d613e975b92778003f79.js"></script>
 
