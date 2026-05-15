@@ -1,0 +1,192 @@
+{
+  "punjabi": [
+    {
+      "title": "Punjabi Munda",
+      "genre": "comedy",
+      "rating": "8.7",
+      "episodes": "8 Episodes",
+      "totalEpisodes": 8,
+      "year": "2023",
+      "image": "https://picsum.photos/id/100/400/200",
+      "description": "A hilarious Punjabi web series about village life and modern challenges.",
+      "cast": "Ammy Virk, Sonam Bajwa",
+      "duration": "35 min",
+      "category": "trending",
+      "keywords": "punjabi comedy village",
+      "likes": "15.2k",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/1.mp4",
+        "https://alibabacloud5.tamashaweb.com/alibaba05.mp4"
+      ]
+    },
+    {
+      "title": "Mirza Sahiban",
+      "genre": "romance",
+      "rating": "9.1",
+      "episodes": "12 Episodes",
+      "totalEpisodes": 12,
+      "year": "2024",
+      "image": "https://picsum.photos/id/101/400/200",
+      "description": "A modern retelling of the classic Punjabi love story.",
+      "cast": "Tarsem Jassar, Sargun Mehta",
+      "duration": "42 min",
+      "category": "trending",
+      "keywords": "punjabi romance love story",
+      "likes": "22.8k",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4"
+      ]
+    }
+  ],
+  "korean": [
+    {
+      "title": "Seoul Vibe",
+      "category": "trending",
+      "genre": "action",
+      "rating": "9.2",
+      "likes": "2.1k",
+      "duration": "65 min",
+      "episodes": "8 Episodes",
+      "totalEpisodes": 8,
+      "year": "2022",
+      "description": "Seoul's underground racing crew gets entangled in a dangerous government operation on the eve of the 1988 Olympics.",
+      "image": "https://images.pexels.com/photos/2614818/pexels-photo-2614818.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+      "keywords": "seoul vibe action crime",
+      "cast": "Yoo Ah-in, Ko Kyung-pyo",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/1.mp4",
+        "https://alibabacloud5.tamashaweb.com/alibaba05.mp4"
+      ]
+    },
+    {
+      "title": "The Glory",
+      "category": "toprated",
+      "genre": "drama",
+      "rating": "8.9",
+      "likes": "4.5k",
+      "duration": "54 min",
+      "episodes": "16 Episodes",
+      "totalEpisodes": 16,
+      "year": "2022",
+      "description": "A woman who suffered brutal school violence meticulously plans her revenge against her tormentors.",
+      "image": "https://images.pexels.com/photos/7518765/pexels-photo-7518765.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/1.mp4",
+      "keywords": "the glory revenge bullying",
+      "cast": "Song Hye-kyo, Lee Do-hyun",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4"
+      ]
+    },
+    {
+      "title": "Moving",
+      "category": "latest",
+      "genre": "action",
+      "rating": "9.1",
+      "likes": "6.8k",
+      "duration": "48 min",
+      "episodes": "20 Episodes",
+      "totalEpisodes": 20,
+      "year": "2023",
+      "description": "Children of former government agents with supernatural abilities try to live normal lives while hidden enemies close in.",
+      "image": "https://images.pexels.com/photos/7794432/pexels-photo-7794432.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+      "keywords": "moving superhero action",
+      "cast": "Ryu Seung-ryong, Han Hyo-joo",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4"
+      ]
+    }
+  ],
+  "bollywood": [
+    {
+      "title": "Sacred Games",
+      "category": "trending",
+      "genre": "crime",
+      "rating": "8.9",
+      "likes": "5.2k",
+      "duration": "50 min",
+      "episodes": "16 Episodes",
+      "totalEpisodes": 16,
+      "year": "2018",
+      "description": "A policeman in Mumbai finds an unexpected link between a gangster and the fate of the city.",
+      "image": "https://images.pexels.com/photos/2674828/pexels-photo-2674828.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+      "keywords": "sacred games mumbai crime",
+      "cast": "Saif Ali Khan, Nawazuddin Siddiqui",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4"
+      ]
+    },
+    {
+      "title": "Mirzapur",
+      "category": "toprated",
+      "genre": "crime",
+      "rating": "9.3",
+      "likes": "8.1k",
+      "duration": "55 min",
+      "episodes": "19 Episodes",
+      "totalEpisodes": 19,
+      "year": "2018",
+      "description": "A power struggle unfolds in the lawless town of Mirzapur.",
+      "image": "https://picsum.photos/id/104/400/200",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/1.mp4",
+      "keywords": "mirzapur crime mafia",
+      "cast": "Pankaj Tripathi, Ali Fazal",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4"
+      ]
+    }
+  ],
+  "hollywood": [
+    {
+      "title": "Stranger Things",
+      "category": "trending",
+      "genre": "horror",
+      "rating": "9.2",
+      "likes": "12.5k",
+      "duration": "55 min",
+      "episodes": "34 Episodes",
+      "totalEpisodes": 34,
+      "year": "2016",
+      "description": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments and terrifying supernatural forces.",
+      "image": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+      "keywords": "stranger things upside down",
+      "cast": "Millie Bobby Brown, Finn Wolfhard",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4"
+      ]
+    },
+    {
+      "title": "Wednesday",
+      "category": "latest",
+      "genre": "comedy",
+      "rating": "8.8",
+      "likes": "9.2k",
+      "duration": "50 min",
+      "episodes": "8 Episodes",
+      "totalEpisodes": 8,
+      "year": "2022",
+      "description": "Wednesday Addams solves a murder mystery at Nevermore Academy.",
+      "image": "https://picsum.photos/id/106/400/200",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+      "keywords": "wednesday addams mystery",
+      "cast": "Jenna Ortega, Emma Myers",
+      "episodeLinks": [
+        "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "https://file.garden/aU9YIYI0UybtQjdC/2.mp4"
+      ]
+    }
+  ]
+}
