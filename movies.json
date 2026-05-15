@@ -1,0 +1,62 @@
+{
+  "punjabi": [
+    {
+      "id": 1,
+      "title": "Carry On Jatta",
+      "year": "2012",
+      "rating": "4.2",
+      "genre": "comedy",
+      "duration": "2h 25m",
+      "imdbRating": "8.1",
+      "image": "https://picsum.photos/id/104/400/600",
+      "description": "A hilarious comedy about a man who pretends to be mentally ill to marry the girl he loves.",
+      "subTitle": "Punjabi Comedy Classic",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+      "qualities": {
+        "480p": "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "720p": "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+        "1080p": "https://file.garden/aU9YIYI0UybtQjdC/1.mp4"
+      }
+    }
+  ],
+  "bollywood": [
+    {
+      "id": 3,
+      "title": "Pathaan",
+      "year": "2023",
+      "rating": "4.8",
+      "genre": "action",
+      "duration": "2h 26m",
+      "imdbRating": "7.0",
+      "image": "https://picsum.photos/id/200/400/600",
+      "description": "An Indian spy takes on the leader of a group of mercenaries.",
+      "subTitle": "Ek Tha Tiger Returns",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+      "qualities": {
+        "480p": "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "720p": "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+        "1080p": "https://file.garden/aU9YIYI0UybtQjdC/1.mp4"
+      }
+    }
+  ],
+  "hollywood": [
+    {
+      "id": 5,
+      "title": "Avatar",
+      "year": "2009",
+      "rating": "4.9",
+      "genre": "sci-fi",
+      "duration": "2h 45m",
+      "imdbRating": "7.6",
+      "image": "https://urbanentertainment.ae/wp-content/uploads/2016/09/avatar-official-poster-wallpaper-3.jpg",
+      "description": "Jake Sully and Neytiri have built a family on Pandora.",
+      "subTitle": "The Way of Water",
+      "trailerUrl": "https://file.garden/aU9YIYI0UybtQjdC/1.mp4",
+      "qualities": {
+        "480p": "https://file.garden/aU9YIYI0UybtQjdC/3.mp4",
+        "720p": "https://file.garden/aU9YIYI0UybtQjdC/2.mp4",
+        "1080p": "https://file.garden/aU9YIYI0UybtQjdC/1.mp4"
+      }
+    }
+  ]
+}
