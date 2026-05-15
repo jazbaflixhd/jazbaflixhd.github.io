@@ -1,0 +1,7 @@
+[
+  {"title": "LIVE TV", "image": "https://picsum.photos/id/20/400/200", "isLiveTV": true},
+  {"title": "KOREAN SERIES", "image": "https://picsum.photos/id/21/400/200", "seriesType": "korean"},
+  {"title": "PUNJABI SERIES", "image": "https://picsum.photos/id/25/400/200", "seriesType": "punjabi"},
+  {"title": "BOLLYWOOD SERIES", "image": "https://picsum.photos/id/22/400/200", "seriesType": "bollywood"},
+  {"title": "HOLLYWOOD SERIES", "image": "https://picsum.photos/id/23/400/200", "seriesType": "hollywood"}
+]
