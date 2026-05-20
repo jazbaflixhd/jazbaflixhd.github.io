@@ -5,7 +5,6 @@ const chromium = require("@sparticuz/chromium");
 const app = express();
 
 app.get("/", async (req, res) => {
-
     const code = req.query.url;
 
     if (!code) {
@@ -15,12 +14,12 @@ app.get("/", async (req, res) => {
         });
     }
 
-    const shareUrl =
-        "https://cloud.jazzdrive.com.pk/share/" + code;
+    const shareUrl = "https://cloud.jazzdrive.com.pk/share/" + code;
+
+    let browser = null;
 
     try {
-
-        const browser = await puppeteer.launch({
+        browser = await puppeteer.launch({
             args: chromium.args,
             defaultViewport: chromium.defaultViewport,
             executablePath: await chromium.executablePath(),
@@ -31,18 +30,19 @@ app.get("/", async (req, res) => {
 
         let finalLink = null;
 
+        // Capture network responses
         page.on("response", async (response) => {
+            try {
+                const url = response.url();
 
-            const url = response.url();
-
-            if (
-                url.includes(".mp4") ||
-                url.includes(".mkv") ||
-                url.includes("download")
-            ) {
-
-                finalLink = url;
-            }
+                if (
+                    url.includes(".mp4") ||
+                    url.includes(".mkv") ||
+                    url.includes("download")
+                ) {
+                    finalLink = url;
+                }
+            } catch (e) {}
         });
 
         await page.goto(shareUrl, {
@@ -50,12 +50,12 @@ app.get("/", async (req, res) => {
             timeout: 0
         });
 
+        // simple safe wait (NO waitForTimeout)
         await new Promise(resolve => setTimeout(resolve, 5000));
 
         await browser.close();
 
         if (finalLink) {
-
             return res.json({
                 success: true,
                 download_url: finalLink
@@ -68,6 +68,7 @@ app.get("/", async (req, res) => {
         });
 
     } catch (e) {
+        if (browser) await browser.close();
 
         return res.json({
             success: false,
@@ -76,6 +77,8 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log("Server running");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log("Server running on port " + PORT);
 });
