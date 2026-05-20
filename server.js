@@ -1,5 +1,6 @@
 const express = require("express");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
+const chromium = require("@sparticuz/chromium");
 
 const app = express();
 
@@ -20,8 +21,10 @@ app.get("/", async (req, res) => {
     try {
 
         const browser = await puppeteer.launch({
-            headless: true,
-            args: ["--no-sandbox"]
+            args: chromium.args,
+            defaultViewport: chromium.defaultViewport,
+            executablePath: await chromium.executablePath(),
+            headless: chromium.headless
         });
 
         const page = await browser.newPage();
@@ -59,20 +62,20 @@ app.get("/", async (req, res) => {
             });
         }
 
-        res.json({
+        return res.json({
             success: false,
             message: "Direct link not found"
         });
 
     } catch (e) {
 
-        res.json({
+        return res.json({
             success: false,
             error: e.toString()
         });
     }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("Server running");
 });
