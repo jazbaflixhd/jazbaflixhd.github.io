@@ -1,13 +1,13 @@
 {
-  "name": "jazbaflixhd",
+  "name": "jazzdrive-api",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "npx puppeteer browsers install chrome"
+    "start": "node server.js"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^123.0.1",
     "express": "^4.18.2",
-    "puppeteer": "^22.15.0"
+    "puppeteer-core": "^22.15.0"
   }
 }
